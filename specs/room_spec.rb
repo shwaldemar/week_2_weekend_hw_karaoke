@@ -60,33 +60,69 @@ class Tests < Minitest::Test
     assert_equal(9, actual)
   end
 
-  def test_add_customer_to_room
-
+  def test_check_in_guest
+    @room1.check_in_guest(@guest_name1)
+    stepa = @room1.guest
+    actual = stepa.count
+    assert_equal(1, actual)
   end
 
+  def test_check_out_guest_r1_capacity2
+    @room1.check_in_guest(@guest_name1)
+    @room1.check_in_guest(@guest_name2)
+    @room1.check_out_guest(@guest_name1)
+    stepa = @room1.guest
+    actual = stepa.count
+    assert_equal(1, actual)
+  end
 
+  def test_check_out_guest_r2_capacity3
+    @room2.check_in_guest(@guest_name1)
+    @room2.check_in_guest(@guest_name2)
+    @room2.check_in_guest(@guest_name3)
+    @room2.check_out_guest(@guest_name1)
+    stepa = @room2.guest
+    actual = stepa.count
+    assert_equal(2, actual)
+  end
 
+  def test_check_out_guest_r3_capacity4
+    @room3.check_in_guest(@guest_name1)
+    @room3.check_in_guest(@guest_name2)
+    @room3.check_in_guest(@guest_name3)
+    @room3.check_in_guest(@guest_name4)
+    @room3.check_out_guest(@guest_name1)
+    stepa = @room3.guest
+    actual = stepa.count
+    assert_equal(3, actual)
+  end
 
+  ##########################################################
 
+  def test_add_song
+    @room1.add_song(@song1)
+    @room1.add_song(@song2)
+    @room1.add_song(@song3)
+    @room1.add_song(@song4)
 
+    stepa = @room1.song_list
+    actual = stepa.count
+    assert_equal(4, actual)
+  end
 
+  ##########################################################
 
-
-  # def test_guest_name
-  # end
+  # def test_remove_song
+  #     @room1.add_song(@song1)
+  #     @room1.add_song(@song2)
+  #     @room1.add_song(@song3)
+  #     @room1.add_song(@song4)
+  #     @room1.remove_song(@song4)
   #
-  #
-  # def test_check_in_guest
-  # end
-  #
-  # def test_check_out_guest
-  # end
-  #
-  # def test_add_song
-  # end
-  #
-  # def test_check_capacity
-  # end
+  #     stepa = @room1.song_list
+  #     actual = stepa.count
+  #     assert_equal(3, actual)
+  #   end
+  end
 
-
-end
+  ##########################################################
