@@ -2,59 +2,44 @@
 
 class Room
 
-attr_reader :name, :guest, :capacity,
+attr_reader :name, :capacity, :guest, :song_list
+#1. & 2. test attr_reader for room names.
+#3. & 4. test attr_reader for room capacity.
+#5. Totals room capacity.
 
-  def initialize(name, capacity, song_list)
+  def initialize(name, capacity)
     @name = name
     @guest = []
     @song_list = []
     @capacity = capacity
   end
 
-##########################################################
-
+#6. Adds guest to guest array for room specified.
   def check_in_guest(guest)
     if @guest.count < @capacity
       @guest.push(guest)
     else
       return "fail no availability try another room"
     end
-
-
-    #1. ask if there is availability to add a customer.
-    #2. search (LOOP THROUGH) rooms for availability & when you find open a room with
-    # open space add guest to guest-list for that room.
-    #3. reduce room capacity by 1.
-
   end
 
-  ##########################################################
-
-
+#7. 8. & 9. Removes guest from guest array for room specified.
   def check_out_guest(guest)
         @guest.delete(guest)
-
-    #1. locate customer in room guest list.
-    #2. delete customer from room guest list.
-    #3. increase room capacity by 1.
   end
 
-  ##########################################################
-
+#10. Adds song to rooms song_list array for room specified.
   def add_song(song)
       @song_list.push(song)
     #1. search room song array for song.
     #2. if song is not there .push song to room song array.
   end
 
-  ##########################################################
-
+#11. Removes song from rooms song_list array.
   def remove_song(song)
     @song_list.delete(song)
     #1. search room song array for song.
     #2. if song is there .delete song from room song array.
   end
-
-  ##########################################################
 
 end
