@@ -4,12 +4,6 @@ class Karaoke
   require_relative('guest.rb')
   require_relative('song.rb')
 
-  def initialize
-    karaoke_management_and_booking_application()
-    return_to_menu()
-  end
-
-
   def setup
     # (name, capacity) from room.rb additional guest, song
     @room1 = Room.new("kylie room", 2)
@@ -223,5 +217,6 @@ class Karaoke
     end #end for main menu conditional case statement.
 
   end #end for Karaoke_management_and_booking_application def.
-  return_to_menu()
 end #end for Karaoke class.
+
+Karaoke.new.karaoke_management_and_booking_application()
